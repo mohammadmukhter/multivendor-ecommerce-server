@@ -22,10 +22,10 @@ const addUserController = async (req, res, next) => {
       }
     );
 
-    console.log(req.body);
-    console.log(imageUploaded.data.data.url);
-    console.log(imageUploaded.data.data.delete_url);
-    console.log(imageUploaded.data.success);
+    // console.log(req.body);
+    // console.log(imageUploaded.data.data.url);
+    // console.log(imageUploaded.data.data.delete_url);
+    // console.log(imageUploaded.data.success);
 
     newUserData = new User({
       name: req.body.name,
@@ -43,7 +43,6 @@ const addUserController = async (req, res, next) => {
       role: "user",
     });
   }
-
   const userAdded = await newUserData.save();
   res.status(200).json({ success: true, data: userAdded });
 };
