@@ -2,8 +2,10 @@
 const express = require("express");
 const dotEnv = require("dotenv");
 const { default: mongoose } = require("mongoose");
-const cookieParser = require("cookie-parser");
+const cors = require("cors");
 const app = express();
+
+app.use(cors());
 dotEnv.config();
 const port = process.env.PORT || 5000;
 
@@ -13,7 +15,11 @@ const {
   errorHandler,
 } = require("./api/middlewares/common/notFoundHandler");
 
-const usersRouters = require("./api/router/usersRouters");
+const usersRouters = require("./api/router/usersRouter");
+
+//   request parser
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // database connection
 mongoose
@@ -23,11 +29,6 @@ mongoose
   })
   .then(() => console.log("database connection successful!"))
   .catch((err) => console.log(err));
-
-//   request parser
-app.use(express.json());
-// parse cookies
-app.use(cookieParser(process.env.COOKIE_SECRET));
 
 // routing setup
 app.use("/users", usersRouters);
