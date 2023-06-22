@@ -17,9 +17,7 @@ const personSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    avatar: {
-      required: true,
-    },
+    userImage: {},
     role: {
       type: String,
       required: true,
@@ -32,6 +30,6 @@ const personSchema = mongoose.Schema(
   }
 );
 
-const Person = mongoose.Model("Person", personSchema);
+const Person = mongoose.model("Person", personSchema);
 
 module.exports = Person;

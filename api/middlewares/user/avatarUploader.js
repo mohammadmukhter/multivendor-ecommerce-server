@@ -1,4 +1,4 @@
-const singleFileUploader = require("../../controllers/singleFileUploader");
+const singleFileUploader = require("../../utilities/singleFileUploader");
 
 const avatarUploader = (req, res, next) => {
   const upload = singleFileUploader(
