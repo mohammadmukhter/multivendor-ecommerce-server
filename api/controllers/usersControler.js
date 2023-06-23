@@ -29,6 +29,7 @@ const addUserController = async (req, res, next) => {
 
     newUserData = new User({
       name: req.body.name,
+      phone: req.body.phone,
       email: req.body.email,
       password: hashedPassword,
       userImage: imageUploaded.data.data.url,
@@ -37,6 +38,7 @@ const addUserController = async (req, res, next) => {
   } else {
     newUserData = new User({
       name: req.body.name,
+      phone: req.body.phone,
       email: req.body.email,
       password: hashedPassword,
       userImage: "",

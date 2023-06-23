@@ -17,12 +17,22 @@ const personSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    phone: {
+      required: true,
+      type: String,
+    },
     userImage: {},
     role: {
       type: String,
       required: true,
       enum: ["admin", "vendor", "user"],
       default: "user",
+    },
+    status: {
+      type: String,
+      required: true,
+      enum: ["active", "inactive", "pending"],
+      default: "pending",
     },
   },
   {
