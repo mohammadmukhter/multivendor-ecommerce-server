@@ -8,7 +8,10 @@ const usersController = require("../controllers/usersControler");
 // router define
 const router = express.Router();
 
-// user post router
+// user data insert router
 router.post("/register", avatarUploader, usersController.addUserController);
+
+// user login router
+router.post("/login", usersController.loginController);
 
 module.exports = router;
