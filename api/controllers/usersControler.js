@@ -2,6 +2,7 @@ const bcrypt = require("bcrypt");
 const User = require("../models/Person");
 const { default: axios } = require("axios");
 const FormData = require("form-data");
+const jwt = require("jsonwebtoken");
 
 const addUserController = async (req, res, next) => {
   const hashedPassword = await bcrypt.hash(req.body.password, 10);
@@ -66,7 +67,17 @@ const loginController = async (req, res, next) => {
     // console.log(checkedPassword);
 
     if (checkedPassword) {
-      res.status(200).json(loggedUserInfo);
+      const token = jwt.sign(
+        {
+          name: getUser.name,
+          email: getUser.email,
+          _id: getUser._id,
+        },
+        process.env.JWT_SECRET,
+        { expiresIn: "24h" }
+      );
+
+      res.status(200).json({ loggedUserInfo, token });
     } else {
       res.status(403).json({
         error: true,
@@ -82,7 +93,13 @@ const loginController = async (req, res, next) => {
   }
 };
 
+const getAllUsersController = async (req, res, next) => {
+  const allUsers = await User.find();
+  res.status(200).json(allUsers);
+};
+
 module.exports = {
   addUserController,
   loginController,
+  getAllUsersController,
 };

@@ -8,6 +8,9 @@ const usersController = require("../controllers/usersControler");
 // router define
 const router = express.Router();
 
+// get all the users
+router.get("/", usersController.getAllUsersController);
+
 // user data insert router
 router.post("/register", avatarUploader, usersController.addUserController);
 
