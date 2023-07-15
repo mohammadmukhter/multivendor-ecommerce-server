@@ -7,7 +7,7 @@ const app = express();
 
 app.use(cors());
 dotEnv.config();
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 3000;
 
 // internal import
 const {
@@ -17,7 +17,7 @@ const {
 
 const usersRouters = require("./api/router/usersRouter");
 
-//   request parser
+// request parser
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
