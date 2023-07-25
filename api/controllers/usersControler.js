@@ -93,13 +93,24 @@ const loginController = async (req, res, next) => {
   }
 };
 
+// get all user data
 const getAllUsersController = async (req, res, next) => {
   const allUsers = await User.find();
   res.status(200).json(allUsers);
+};
+
+// get specific logged User data
+const loggedUserController = async (req, res, next) => {
+  const loggedUserEmail = req.userData.email;
+  const loggedUserName = req.userData.name;
+
+  console.log(loggedUserEmail);
+  res.status(200).json({ name: loggedUserName, email: loggedUserEmail });
 };
 
 module.exports = {
   addUserController,
   loginController,
   getAllUsersController,
+  loggedUserController,
 };

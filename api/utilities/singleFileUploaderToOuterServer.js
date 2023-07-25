@@ -2,7 +2,11 @@
 const multer = require("multer");
 const createHttpError = require("http-errors");
 
-function singleFileUploader(allowed_file_types, max_file_size, error_msg) {
+function singleFileUploaderToOuterServer(
+  allowed_file_types,
+  max_file_size,
+  error_msg
+) {
   const upload = multer({
     limits: {
       fileSize: max_file_size,
@@ -19,4 +23,4 @@ function singleFileUploader(allowed_file_types, max_file_size, error_msg) {
   return upload;
 }
 
-module.exports = singleFileUploader;
+module.exports = singleFileUploaderToOuterServer;

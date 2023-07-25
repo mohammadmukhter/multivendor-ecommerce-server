@@ -1,7 +1,7 @@
-const singleFileUploader = require("../../utilities/singleFileUploader");
+const singleFileUploaderToOuterServer = require("../../utilities/singleFileUploaderToOuterServer");
 
 const avatarUploader = (req, res, next) => {
-  const upload = singleFileUploader(
+  const upload = singleFileUploaderToOuterServer(
     ["image/jpeg", "image/jpg", "image/png"],
     1048576,
     "Only .jpg, jpeg or .png format allowed!"
