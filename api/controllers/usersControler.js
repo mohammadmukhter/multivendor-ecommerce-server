@@ -102,8 +102,14 @@ const getAllUsersController = async (req, res, next) => {
 // get specific logged User data
 const loggedUserController = async (req, res, next) => {
   const loggedUserEmail = req.userData.email;
-  const loggedUserName = req.userData.name;
-  res.status(200).json({ name: loggedUserName, email: loggedUserEmail });
+
+  const loggedUser = await User.findOne({ email: loggedUserEmail });
+
+  res.status(200).json({
+    name: loggedUser.name,
+    email: loggedUser.email,
+    userImage: loggedUser.userImage,
+  });
 };
 
 module.exports = {
