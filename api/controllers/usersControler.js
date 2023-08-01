@@ -1,6 +1,6 @@
 const bcrypt = require("bcrypt");
 const User = require("../models/Person");
-const { default: axios } = require("axios");
+const { default: axios, all } = require("axios");
 const FormData = require("form-data");
 const jwt = require("jsonwebtoken");
 
@@ -95,14 +95,15 @@ const loginController = async (req, res, next) => {
 
 // get all user data
 const getAllUsersController = async (req, res, next) => {
-  const allUsers = await User.find();
+  const allUsers = await User.find().select(
+    "name email phone status role userImage"
+  );
   res.status(200).json(allUsers);
 };
 
 // get specific logged User data
 const loggedUserController = async (req, res, next) => {
   const loggedUserEmail = req.userData.email;
-
   const loggedUser = await User.findOne({ email: loggedUserEmail });
 
   res.status(200).json({

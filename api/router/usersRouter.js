@@ -11,7 +11,7 @@ const verifyEmailByServerEmail = require("../middlewares/verifyToken/verifyEmail
 const router = express.Router();
 
 // get all the users
-router.get("/", usersController.getAllUsersController);
+router.get("/", verifyToken, usersController.getAllUsersController);
 
 // user data insert router
 router.post("/register", avatarUploader, usersController.addUserController);

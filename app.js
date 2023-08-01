@@ -14,8 +14,8 @@ const {
   notFoundHandler,
   errorHandler,
 } = require("./api/middlewares/common/notFoundHandler");
-
-const usersRouters = require("./api/router/usersRouter");
+const usersRouter = require("./api/router/usersRouter");
+const categoryRouter = require("./api/router/categoryRouter");
 
 // request parser
 app.use(express.json());
@@ -31,7 +31,11 @@ mongoose
   .catch((err) => console.log(err));
 
 // routing setup
-app.use("/users", usersRouters);
+// user router
+app.use("/users", usersRouter);
+
+// category router
+app.use("/category", categoryRouter);
 
 // 404 not found handler
 app.use(notFoundHandler);
