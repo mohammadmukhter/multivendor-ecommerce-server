@@ -16,6 +16,7 @@ const {
 } = require("./api/middlewares/common/notFoundHandler");
 const usersRouter = require("./api/router/usersRouter");
 const categoryRouter = require("./api/router/categoryRouter");
+const subCategoryRouter = require("./api/router/subCategoryRouter");
 
 // request parser
 app.use(express.json());
@@ -36,6 +37,9 @@ app.use("/users", usersRouter);
 
 // category router
 app.use("/categories", categoryRouter);
+
+// sub category router
+app.use("/subCategories", subCategoryRouter);
 
 // 404 not found handler
 app.use(notFoundHandler);
