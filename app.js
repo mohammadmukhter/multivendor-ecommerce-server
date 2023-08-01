@@ -35,7 +35,7 @@ mongoose
 app.use("/users", usersRouter);
 
 // category router
-app.use("/category", categoryRouter);
+app.use("/categories", categoryRouter);
 
 // 404 not found handler
 app.use(notFoundHandler);

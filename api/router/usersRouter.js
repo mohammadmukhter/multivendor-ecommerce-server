@@ -19,7 +19,7 @@ router.post("/register", avatarUploader, usersController.addUserController);
 // user login router
 router.post("/login", usersController.loginController);
 
-// get specific logged user
+// get specific logged user router
 router.get(
   "/loggedUser",
   verifyToken,
