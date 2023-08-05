@@ -3,6 +3,7 @@ const {
   addSubCategoryController,
   subCategoriesController,
   updateSubCategory,
+  deleteSubCategory,
 } = require("../controllers/subCategoryController");
 const router = express.Router();
 
@@ -18,5 +19,8 @@ router.post("/", addSubCategoryController);
 
 // update a sub Category router
 router.patch("/:id", updateSubCategory);
+
+// delete a sub Category router
+router.delete("/:id", deleteSubCategory);
 
 module.exports = router;

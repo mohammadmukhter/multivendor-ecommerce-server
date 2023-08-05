@@ -34,8 +34,18 @@ const updateSubCategory = async (req, res, next) => {
   res.status(200).json({ updated: true, result });
 };
 
+// delete a sub Category controller
+const deleteSubCategory = async (req, res, next) => {
+  const subCategoryId = req.params.id;
+
+  const filter = { _id: subCategoryId };
+  const result = await SubCategory.deleteOne(filter);
+  res.status(200).json({ deleted: true, result });
+};
+
 module.exports = {
   addSubCategoryController,
   subCategoriesController,
   updateSubCategory,
+  deleteSubCategory,
 };
