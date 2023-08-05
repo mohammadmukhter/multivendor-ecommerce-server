@@ -1,6 +1,17 @@
 // internal imports
 const SubCategory = require("./../models/SubCategory");
 
+// get all the sub categories data
+const subCategoriesController = async (req, res, next) => {
+  const allSubCategoriesData = await SubCategory.find().populate(
+    "categoryId",
+    "categoryName"
+  );
+
+  res.status(200).json(allSubCategoriesData);
+};
+
+// add a sub category controller
 const addSubCategoryController = async (req, res, next) => {
   const subCategoryData = req.body;
   const insertAbleSubCategory = new SubCategory(subCategoryData);
@@ -13,6 +24,18 @@ const addSubCategoryController = async (req, res, next) => {
   }
 };
 
+// update a sub Category controller
+const updateSubCategory = async (req, res, next) => {
+  const subCategoryId = req.params.id;
+  const newSubCategoryData = req.body;
+
+  const filter = { _id: subCategoryId };
+  const result = await SubCategory.updateOne(filter, newSubCategoryData);
+  res.status(200).json({ updated: true, result });
+};
+
 module.exports = {
   addSubCategoryController,
+  subCategoriesController,
+  updateSubCategory,
 };
