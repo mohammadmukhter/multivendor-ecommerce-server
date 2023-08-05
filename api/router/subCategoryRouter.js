@@ -14,6 +14,9 @@ const router = express.Router();
 // get all the sub category router
 router.get("/", subCategoriesController);
 
+// get all the sub category  by category Id router
+router.get("/:id", subCategoriesController);
+
 // sub category add router
 router.post("/", addSubCategoryController);
 

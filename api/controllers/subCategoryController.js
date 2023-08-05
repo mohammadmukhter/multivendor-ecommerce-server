@@ -3,11 +3,20 @@ const SubCategory = require("./../models/SubCategory");
 
 // get all the sub categories data
 const subCategoriesController = async (req, res, next) => {
-  const allSubCategoriesData = await SubCategory.find().populate(
-    "categoryId",
-    "categoryName"
-  );
+  const categoryId = req.params.id;
 
+  let allSubCategoriesData;
+
+  if (categoryId) {
+    allSubCategoriesData = await SubCategory.find({
+      categoryId: categoryId,
+    }).populate("categoryId", "categoryName");
+  } else {
+    allSubCategoriesData = await SubCategory.find({}).populate(
+      "categoryId",
+      "categoryName"
+    );
+  }
   res.status(200).json(allSubCategoriesData);
 };
 
