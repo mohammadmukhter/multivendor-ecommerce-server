@@ -5,6 +5,7 @@ const router = express.Router();
 const {
   addCategoryController,
   categories,
+  updateCategory,
 } = require("./../controllers/categoryController");
 
 // all middleware
@@ -16,5 +17,8 @@ router.post("/", verifyToken, verifyEmailByServerEmail, addCategoryController);
 
 // get all the category router
 router.get("/", verifyToken, verifyEmailByServerEmail, categories);
+
+// update a category router
+router.patch("/:id", verifyToken, verifyEmailByServerEmail, updateCategory);
 
 module.exports = router;

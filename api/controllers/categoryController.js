@@ -17,7 +17,20 @@ const categories = async (req, res, next) => {
   res.status(200).json(allCategoryData);
 };
 
+// update a category controller
+const updateCategory = async (req, res, next) => {
+  const categoryId = req.params.id;
+  const newData = req.body;
+
+  const filter = { _id: categoryId };
+
+  const result = await Category.updateOne(filter, newData);
+
+  res.status(200).json({ updated: true, result });
+};
+
 module.exports = {
   addCategoryController,
   categories,
+  updateCategory,
 };
