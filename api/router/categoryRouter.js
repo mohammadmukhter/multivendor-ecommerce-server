@@ -6,6 +6,7 @@ const {
   addCategoryController,
   categories,
   updateCategory,
+  deleteCategory,
 } = require("./../controllers/categoryController");
 
 // all middleware
@@ -20,5 +21,8 @@ router.get("/", verifyToken, verifyEmailByServerEmail, categories);
 
 // update a category router
 router.patch("/:id", verifyToken, verifyEmailByServerEmail, updateCategory);
+
+// delete a category router
+router.delete("/:id", verifyToken, verifyEmailByServerEmail, deleteCategory);
 
 module.exports = router;
