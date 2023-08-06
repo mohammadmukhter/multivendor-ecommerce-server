@@ -15,13 +15,11 @@ const addProduct = async (req, res, next) => {
     });
 
     const result = await newData.save();
-    if (result) {
-      res.status(200).json({ inserted: true, result });
-    }
+
+    res.status(200).json({ inserted: true, result });
   } catch (err) {
     res.status(500).json({ error: true, msg: "Something went wrong!" });
   }
-  res.json({ data: productData, result });
 };
 
 module.exports = {
