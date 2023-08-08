@@ -26,7 +26,9 @@ const addProduct = async (req, res, next) => {
 // get all the product controller
 const products = async (req, res, next) => {
   try {
-    const allProducts = await Product.find();
+    const allProducts = await Product.find()
+      .populate("categoryId", "categoryName")
+      .populate("subCategoryId", "subCategoryName");
     res.status(200).json(allProducts);
   } catch (err) {
     res.status(500).json({ error: true, err });
