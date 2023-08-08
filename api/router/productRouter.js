@@ -9,9 +9,9 @@ const productImageUploader = require("./../middlewares/product/productImageUploa
 const verifyToken = require("../middlewares/verifyToken/verifyToken");
 
 // add a product router
-router.post("/", productImageUploader, addProduct);
+router.post("/", verifyToken, productImageUploader, addProduct);
 
-// get all product data router
-router.get("/", verifyToken, products);
+// get all product data router || public api router
+router.get("/", products);
 
 module.exports = router;
