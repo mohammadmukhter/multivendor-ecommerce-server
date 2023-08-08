@@ -20,6 +20,7 @@ const usersRouter = require("./api/router/usersRouter");
 const categoryRouter = require("./api/router/categoryRouter");
 const subCategoryRouter = require("./api/router/subCategoryRouter");
 const productRouter = require("./api/router/productRouter");
+const productCartRouter = require("./api/router/productCartRouter");
 
 // request parser
 app.use(express.json());
@@ -46,6 +47,9 @@ app.use("/subCategories", subCategoryRouter);
 
 // product router
 app.use("/products", productRouter);
+
+// add a product on Cart
+app.use("/carts", productCartRouter);
 
 // 404 not found handler
 app.use(notFoundHandler);
