@@ -7,6 +7,8 @@ const app = express();
 
 app.use(cors());
 dotEnv.config();
+app.use(express.json());
+app.use(express.static("public"));
 const port = process.env.PORT || 3000;
 
 // internal import
